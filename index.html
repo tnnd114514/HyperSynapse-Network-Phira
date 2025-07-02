@@ -22,11 +22,16 @@
     }
 
     .parallax-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
       width: 100vw;
       height: 100vh;
       background-image: url('https://cdn.jsdelivr.net/gh/tnnd114514/HyperSynapse-Network-Phira@main/backgroung.jpg');
       background-size: cover;
       background-position: center;
+      background-repeat: no-repeat;
+      z-index: -2; /* 确保在粒子和页面内容之下 */
     }
 
     #particles-js {
