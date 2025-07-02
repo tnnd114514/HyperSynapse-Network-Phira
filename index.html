@@ -1,14 +1,48 @@
-<!DOCTYPE html><html lang="zh">
+<!DOCTYPE html>
+<html lang="zh">
 <head>
-  <meta name="msvalidate.01" content="8596199D3803C49D4C202626D6211FDA" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="HSN.ico" sizes="64x64" type="image/png"> 
-  <title>HyperSynapse Network免费Phira多人联机服务器</title>
+  <title>HyperSynapse Network</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
-    html, body { width:100%; height:100%; font-family: 'Segoe UI', sans-serif; background:#000; color:#eee; overflow-x: hidden; scroll-behavior: smooth; }
-    body { position: relative; font-size: 12px; }
+    html, body {
+      width:100%;
+      height:100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: #000;
+      color:#eee;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      position: relative;
+      font-size: 12px;
+    }
+
+    .parallax-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('./background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: -2;
+    }
+
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+    }
+
     header {
       position: fixed;
       top: 0;
@@ -21,75 +55,57 @@
       background: rgba(0, 0, 0, 0.4);
       z-index: 1000;
     }
+
     header img {
       height: 32px;
     }
-    .hero {
+
+    section {
       height: 100vh;
-      overflow: hidden;
-      position: relative;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(4px);
-      z-index: 1;
-    }
-    .parallax-bg {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-image: url('backgroung.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      z-index: 0;
-    }
-    #particles-js {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 2;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 3;
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 1rem 2rem;
-      flex-direction: column;
-    }
-    .hero-content h1 {
-      font-size: 1.5rem;
-      color: #fff;
-      animation: fadeInLeft 1s ease-out;
-      text-align: left;
-    }
-    .tagline {
-      margin-top: 0.5rem;
-      font-size: 0.75rem;
-      color: #ccc;
-      animation: fadeInLeft 1.5s ease-out;
-      text-align: left;
-    }
-    .qq-section {
-      height: 100vh;
-      background: #000;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      font-size: 1rem;
-      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease-out;
     }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-content {
+      z-index: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding-left: 10%;
+      width: 100%;
+    }
+
+    .hero-content h1 {
+      font-size: 1.5rem;
+      color: #fff;
+      animation: fadeInLeft 1s ease-out forwards;
+    }
+
+    .tagline {
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: #ccc;
+      animation: fadeInLeft 1.5s ease-out forwards;
+    }
+
     .qq-section h2 {
       font-size: 1.5rem;
       color: #00d4ff;
       margin-bottom: 1rem;
     }
+
     .qq-section button {
       margin-top: 1rem;
       padding: 0.5rem 1rem;
@@ -100,9 +116,11 @@
       color: #fff;
       cursor: pointer;
     }
+
     .qq-section button:hover {
       background: #0099cc;
     }
+
     @keyframes fadeInLeft {
       from { opacity: 0; transform: translateX(-40px); }
       to { opacity: 1; transform: translateX(0); }
@@ -110,20 +128,27 @@
   </style>
 </head>
 <body>
+  <div class="parallax-bg"></div>
+  <div id="particles-js"></div>
+
   <header>
-    <img src="logo.png" alt="Logo" />
-  </header>  <section class="hero">
-    <div class="parallax-bg"></div>
-    <div id="particles-js"></div>
-    <div class="hero-content">
-      <h1>HyperSynapse Network</h1>
-      <p class="tagline">免费 · 稳定 · 低延迟的Phira多人联机服务器</p>
-    </div>
-  </section>  <section class="qq-section">
-    <h2>加入我们的 QQ 群获取服务器IP</h2>
+    <img src="./logo.png" alt="Logo" />
+  </header>
+
+  <section class="hero hero-content">
+    <h1>HyperSynapse Network</h1>
+    <p class="tagline">免费 · 稳定 · 低延迟</p>
+  </section>
+
+  <section class="qq-section">
+    <h2>加入我们的 QQ 群</h2>
     <p>QQ群号：1049578201</p>
     <button onclick="copyQQ()">点击复制</button>
-  </section>  <!-- particles.js script -->  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>  <script>
+  </section>
+
+  <!-- 粒子效果 -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
     particlesJS("particles-js", {
       "particles": {
         "number": {"value": 40},
@@ -143,5 +168,21 @@
       navigator.clipboard.writeText('1049578201')
         .then(() => alert('QQ群号已复制！'));
     }
+
+    // 页面滚动进入动画
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>   }
   </script></body>
 </html>
